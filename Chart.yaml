@@ -1,0 +1,6 @@
+apiVersion: v2
+name: eva-dock
+description: Helm chart for the EVA-Dock backend
+type: application
+version: 0.1.0
+appVersion: "3.3.1"

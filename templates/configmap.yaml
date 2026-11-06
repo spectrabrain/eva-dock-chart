@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "eva-dock.fullname" . }}
+  labels:
+    {{- include "eva-dock.labels" . | nindent 4 }}
+data:
+  VERIFY_TLS: {{ .Values.config.verifyTls | toString | quote }}
+  DASHBOARD_FEEDBACK_FALLBACK_SOURCE: {{ .Values.config.dashboardFeedbackFallbackSource | quote }}
+  DASHBOARD_ANALYSIS_POLL_SEC: {{ .Values.config.dashboardAnalysisPollSec | quote }}
+  DASHBOARD_ANALYSIS_OVERLAP_SEC: {{ .Values.config.dashboardAnalysisOverlapSec | quote }}
+  DASHBOARD_ANALYSIS_MAX_GAP_SEC: {{ .Values.config.dashboardAnalysisMaxGapSec | quote }}
+  EVA_MYSQL_PORT: {{ .Values.config.evaMysqlPort | quote }}
+  EVA_MYSQL_DATABASE: {{ .Values.config.evaMysqlDatabase | quote }}
+  INGEST_STALE_SEC: {{ .Values.config.ingestStaleSec | quote }}
+  DASHBOARD_ENABLED: {{ .Values.config.dashboardEnabled | toString | quote }}
+  LIVE_ENABLED: {{ .Values.config.liveEnabled | toString | quote }}
+  STREAMING_ENABLED: {{ .Values.config.streamingEnabled | toString | quote }}
+  FEED_MAX: {{ .Values.config.feedMax | quote }}
+  DOCK_AUTH_TOKEN_TTL_SEC: {{ .Values.config.dockAuthTokenTtlSec | quote }}
+  DOCK_PUBLIC_URL: {{ .Values.config.dockPublicUrl | quote }}
+  LIVE_PER_EVA: {{ .Values.config.livePerEva | quote }}
+  STREAM_IDLE_TIMEOUT_SEC: {{ .Values.config.streamIdleTimeoutSec | quote }}
+  DOCK_PORT: "18080"
+  DATABASE_URL: "sqlite:////data/eva_live.db"
+  RUNTIME_DB_FILE: "/data/eva_live.db"
+  HISTORY_FILE: "/data/eva_live.db"
