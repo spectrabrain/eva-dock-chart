@@ -16,6 +16,39 @@ SQLite를 한 파일에 쓰므로 기본 replica 수는 1입니다. 이 차트�
 TLS 종료는 Ingress가 담당하는 구성을 기본으로 합니다. EVA-Dock은 `/`와 `/api/...` 경로를
 사용하므로 Ingress에서는 전용 호스트 사용을 권장합니다.
 
+## IP 접속과 Traefik 전용 포트
+
+DNS 없이 IP로 Dock을 제공하고 EVA-App과 `/` 경로가 겹치는 경우, Traefik에 Dock 전용 entrypoint를
+만들고 전용 NodePort로 공개할 수 있습니다. 예를 들어 entrypoint 이름은 `docksecure`, 외부 NodePort는
+`32020`으로 정합니다.
+
+Dock chart values에는 다음처럼 같은 entrypoint와 외부 URL을 지정합니다.
+
+```yaml
+ingress:
+  enabled: true
+  className: traefik
+  host: "222.108.131.192"
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: docksecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  tls:
+    enabled: true
+    secretName: eva-dock-tls
+
+config:
+  dockPublicUrl: "https://222.108.131.192:32020"
+```
+
+Traefik에서도 `docksecure` entrypoint를 정의하고 Traefik Service의 NodePort `32020`을 해당
+entrypoint에 연결해야 합니다. Ingress annotation은 라우터가 사용할 entrypoint를 선택할 뿐,
+entrypoint나 외부 포트를 생성하지 않습니다. Traefik 설정 방법은 설치된 Traefik chart와 배포 방식에
+따라 다릅니다.
+
+TLS Secret은 EVA-Dock Ingress와 같은 namespace에 있어야 합니다. 인증서에 접속 IP가 SAN으로 들어
+있어야 하며, 자체 서명 인증서는 브라우저 경고가 표시될 수 있습니다. `dockPublicUrl`은 실제 접속할
+HTTPS 주소와 포트에 맞춥니다.
+
 ## 앱 민감값
 
 초기 설치에서는 `values.yaml`의 다음 항목을 입력하면 차트가 Kubernetes Secret을 만들고
