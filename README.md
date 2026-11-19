@@ -64,6 +64,9 @@ secrets:
 MySQL 계정은 feedback 조회를 DB로 설정한 경우에만 필요합니다. 기존 Secret을 쓰려면
 `secrets.existingSecret`에 이름을 지정할 수 있습니다.
 
+대시보드 EVA 피드백·최근 알림 조회의 전역 동시 요청 수는 `config.dashboardApiConcurrency`로
+조정합니다. 기본값은 32이며, EVA별 동시 요청과 피드백 페이지 병렬 조회는 각각 8개입니다.
+
 ## ECR 이미지 pull (NKS)
 
 ECR 이미지 pull 인증은 앱 민감값 Secret과 별도입니다. NKS에서 사용할 ECR Docker 인증 Secret을
