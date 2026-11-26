@@ -3,9 +3,9 @@ entries:
   eva-dock:
   - apiVersion: v2
     appVersion: 3.4.0-rc1
-    created: "2026-11-25T18:27:05.777250759+09:00"
+    created: "2026-11-26T10:55:14.0974812+09:00"
     description: Helm chart for the EVA-Dock web application (frontend and backend)
-    digest: ce8e700d5880f4d3754bd7f5e5359976468ea8d347c125127f0a1b01259011b3
+    digest: 4181028561d97c23fde6a96c640c344a1bcccb55f5ad39738b72ff29f353861b
     name: eva-dock
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 3.4.0
   - apiVersion: v2
     appVersion: 3.3.1
-    created: "2026-11-25T18:27:05.776402516+09:00"
+    created: "2026-11-26T10:55:14.096459775+09:00"
     description: Helm chart for the EVA-Dock web application (frontend and backend)
     digest: fcec0365bb07a2b906dc2b30adf5421de0ad2cba784b70542356e2eda4e99a4c
     name: eva-dock
@@ -23,7 +23,7 @@ entries:
     version: 3.3.2
   - apiVersion: v2
     appVersion: 3.3.1
-    created: "2026-11-25T18:27:05.773758451+09:00"
+    created: "2026-11-26T10:55:14.095806254+09:00"
     description: Helm chart for the EVA-Dock web application (frontend and backend)
     digest: fe917592fc4a72e228a4b18c3bed0ce23371e0b4af999250c3e56c95af39cb56
     name: eva-dock
@@ -31,4 +31,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/spectrabrain/eva-dock-chart/main/eva-dock-3.3.1.tgz
     version: 3.3.1
-generated: "2026-11-25T18:27:05.7729964+09:00"
+generated: "2026-11-26T10:55:14.095128937+09:00"
